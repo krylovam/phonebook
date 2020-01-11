@@ -1,0 +1,117 @@
+Тесты:
+1. Show phonebook
+    1.1 Empty file - correct
+    1.2 Not empty file - correct
+2. Add contact
+    2.1 Name & Surname
+        Valid:
+        2.1.1 Valid name&surname without " " Example: "Ivan" "Ivanov" Answer: Ivan Ivanov is added to phonebook
+        2.1.2 Valid name&surname with " " Example: "Ivan ogly" "Iva nov" Answer: Ivan ogly Iva nov is added to phonebook
+        2.2.3 Valid name&surname with numbers Example: "Ivan123" "Iva456nov" Answer: Ivan123 Iva456nov is added to phonebook
+        2.2.4 Valid name&surname with " " and numbers Example:"Ivan 123" "Iva 123nov" Answer: Ivan 123 Iva 123nov  is added to phonebook
+        2.2.5 Valid name&surname starts with numbers Example: "123Ivan" "567ivanov" Answer: 123ivan 567ivanov is added to phonebook
+        2.2.6 Valid name&surname starts with " " Example:" Ivan" " Ivanov" Answer:  ivan  ivanov is added to phonebook
+        2.2.7 Valid name&surname start with a small letter Example: "ivan" "ivanov" Answer: Ivan Ivanov is added to phonebook
+        Invalid:
+        2.1.8 Invalid syntax with russian letters Example: "Иван" "Иванов" Answer: Invalid format
+                                                                                Please try add a contact again
+        2.1.9 Invalid syntax with punctuation marks Example: "Iv,an" "Ivan!ov" Answer:  Invalid format
+                                                                                Please try add a contact again
+    2.2 Phone Number
+        2.2.1 Valid number starts with 8 Example: "89111111111" Answer: Ivan Ivanov is added to phonebook
+        2.2.2 Valid number starts with +7 Example: "+71111111111" Answer: Ivan Ivanov is added to phonebook
+        2.2.3 Invalid number start with other number Example: "51111111111" Answer: Invalid format
+                                                                                Please try add a contact again
+        2.2.4 Invalid number, which is longer than 11 Example: "891100011000" Answer: Invalid format
+                                                                                Please try add a contact again
+        2.2.5 Invalid number, which id shorter than 11 Example: "8900111001" Answer: Invalid format
+                                                                                Please try add a contact again
+    2.3 Date of Birth
+        2.3.1 Valid empty space Example: "" Answer: Ivan Ivanov is added to phonebook
+        2.3.2 Valid date Example: "21.10.2015" Answer: Ivan Ivanov is added to phonebook
+        2.3.3 Valid date with zero Example: "01.01.2016" Answer: Ivan Ivanov is added to phonebook
+        2.3.4 Invalid date with letters Example: "qw.05.2m15" Answer: Invalid format of date
+
+                                                                      Ivan Neivanov is added to phonebook
+        2.3.4 Invalid date Example: "29.02.2019" Answer:Invalid format of date
+
+                                                        Ivan Neivanov is added to phonebook
+        2.3.5 Invalid format of valid date Example:"2016.03.12" Answer:Invalid format of date
+
+                                                                      Ivan Neivanov is added to phonebook
+        2.3.6 Invalid format of valid date Example:"12-02-2016" Answer:Invalid format of date
+
+                                                                      Ivan Neivanov is added to phonebook
+3. Add new number
+     3.1 Valid name&surname with other number Example: "Maria" "Krylova" "89999999999" Answer: new number of Krylova Maria is added
+     3.2 Valid name&surname with similar number Example: "Maria" "Krylova" "89101076815" Answer: this number is already in phonebook
+     3.3 Valid name&surname with invalid number Example: "Maria" "Krylova" "8999" Answer: Not valid format
+     3.4 Invaliid name&surname Example: "asdf" "dfghjk" Answer: No such contact
+4. Delete contact
+    4.1 Valid name&surname Example: "Maria" "Krylova"  Answer: Are you sure that you want to delete Maria Krylova from your phonebook?1 - Yes 2 - No
+    4.2 Invalid name or surname Example: "asdf" "sdfghjk" Answer: No such contact
+5. Change contact
+    5.1 Search
+        5.1.1 Valid name&surname Example: "Maria" "Krylova" Answer: What do you want to change in contact Maria Krylova
+                                                                1 - name, 2 - surname, 3 - phone number, 4 - date of birth
+        5.1.2 Invalid name or surname Example: "asdf0" " sdfghjkl" Answer: No such contact
+    5.2 Changing name
+        5.2.1 Valid new name Example:"Masha" Answer: Contact of Masha Krylova has changed
+        5.2.2 Inavalid new name Example: "Мария" Answer: Invalid format
+    5.3 Changing surname
+        5.3.1 Valid new surname Example:"Krulova" Answer: Contact of Maria Krulova has changed
+        5.3.2 Inavalid new surname Example: "Крылова" Answer: Invalid format
+    5.4 Changing phone number
+        5.4.1 Valid new phone number Example:"89101076815" Answer: Contact of Maria Krylova has changed
+        5.4.2 Inavalid new phone number Example: "123456" Answer: Invalid format
+    5.5 Changing date of birth
+        5.5.1 Valid new date of birth Example:"23.01.2001" Answer: Contact of Maria Krylova has changed
+        5.5.2 Inavalid new date of birth Example: "29.02.2001" Answer: Invalid format
+6. Find contact
+    6.1 Only by Name
+        6.1.1 Full name Example: "Maria" Answer: Krylova Maria 89101076815 23.01.2001
+        6.1.2 First part of name Example "Ma" Answer:Krylova Maria 89101076815 23.01.2001
+                                                     Krylova Marina 89092966565 10.12.1970
+        6.1.3 Not first part of name Example: "ria" Answer: Krylova Maria 89101076815 23.01.2001
+                                                            Kirsanova Daria 89159507132 08.11.2000
+                                                            Sadova Daria 89201114083
+                                                            Tokareva Daria +79875430274 02.02.2001
+                                                            Gorbunova Valeria +79159481997 28.05.2000
+        6.1.4 Invalid name Example: "Ivan" Answer: No such contact
+    6.2 Only by Surname
+        6.2.1 Full surname Example: "Krylova" Answer: Krylova Maria 89101076815 23.01.2001
+                                                      Krylova Irina +79101461469 08.01.1992
+                                                      Krylova Marina 89092966565 10.12.1970
+        6.2.2 First part of name Example "Volk" Answer:Volkova Irina +79200095917 01.06.2000
+        6.2.3 Not first part of name Example: "ylova" Answer: Krylova Maria 89101076815 23.01.2001
+                                                      Krylova Irina +79101461469 08.01.1992
+                                                      Krylova Marina 89092966565 10.12.1970
+        6.2.4 Invalid name Example: "Ivanov" Answer: No such contact
+    6.3 Only by number
+        6.3.1 Valid phone number Example: "89101076815" Answer: Krylova Maria 89101076815 23.01.2001
+        6.3.2 Valid second phone number Example: "89357869845" Answer: Krylov Igor 89087279188 89357869845 28.11.1965
+        6.3.3 Invalid phone number Example: "3456" Answer: No such contact
+    6.4 By 2 parametrs
+        6.4.1 by valid name and surname Example: "Mar" "Kryl" Answer: Krylova Maria 89101076815 23.01.2001
+                                                                      Krylova Marina 89092966565 10.12.1970
+        6.4.2 by valid name and phone number Example: "Mar" "910" Answer: Krylova Maria 89101076815 23.01.2001
+        6.4.3 by valid surname and phone number Example: "Kryl" "910" Answer: Krylova Maria 89101076815 23.01.2001
+                                                                              Krylova Irina +79101461469 08.01.1992
+        6.4.3 Invalid paramers Example: "asd" "9999" Answer: No such contact
+    6.5 By 3 paramenrs
+        6.5.1 by valid parametrs Example: "Mar" "Kryl" "910" Answer: Krylova Maria 89101076815 23.01.2001
+        6.5.2 by partly invalid parametrs Example: "Mar" "Kryl" "999" Answer: No such contact
+7. Age of contact
+    7.1 Date of birth is exist Example: "Irina" "Krylova" Answer: 27
+    7.2 Date of birth is not exist Example: "Kirill" "Raykov" Answer: Date of Birth is not exist
+    7.3 Invalid name of contact Example: "Ivan" "Ivanov" Answer: No such contact
+8. Birthdays in next 30 days
+    8.1 Current year correct
+    8.2 Next year correct
+9. Contacts older/younger than
+    9.1 Valid format Example: "18" Answer: Belousova Alina 17
+                                           Chazanov Boris 17
+    9.2 Inavlid format Example: "fhjc" Answer: Invalid format
+    9.3 No such contacts Example: "15" Answer:
+10. Exit : correct saving
+
